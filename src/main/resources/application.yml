@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: item-service
+  config:
+    import: 'optional:configserver: '
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: config-server
+
+
+eureka:
+  instance:
+    prefer-ip-address: false
+    hostname: 35.216.57.113
+
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://35.216.57.113:3150/eureka/
