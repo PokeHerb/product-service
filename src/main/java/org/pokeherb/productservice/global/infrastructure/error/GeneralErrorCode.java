@@ -1,4 +1,4 @@
-package org.pokeherb.itemservice.global.infrastructure.error;
+package org.pokeherb.productservice.global.infrastructure.error;
 
 
 

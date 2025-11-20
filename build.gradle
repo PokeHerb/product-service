@@ -6,7 +6,7 @@ plugins {
 
 group = 'org.pokeherb'
 version = '0.0.1-SNAPSHOT'
-description = 'item-service'
+description = 'product-service'
 
 java {
     toolchain {

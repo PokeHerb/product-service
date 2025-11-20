@@ -1,13 +1,13 @@
-package org.pokeherb.itemservice;
+package org.pokeherb.productservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ItemServiceApplication {
+public class ProductServiceApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ItemServiceApplication.class, args);
+        SpringApplication.run(ProductServiceApplication.class, args);
     }
 
 }

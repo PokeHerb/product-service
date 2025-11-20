@@ -1,4 +1,4 @@
-package org.pokeherb.itemservice.global.infrastructure.success;
+package org.pokeherb.productservice.global.infrastructure.success;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

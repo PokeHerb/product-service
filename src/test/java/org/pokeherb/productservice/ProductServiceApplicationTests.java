@@ -1,10 +1,10 @@
-package org.pokeherb.itemservice;
+package org.pokeherb.productservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ItemServiceApplicationTests {
+class ProductServiceApplicationTests {
 
     @Test
     void contextLoads() {

@@ -1,11 +1,10 @@
-package org.pokeherb.itemservice.global.infrastructure.error;
+package org.pokeherb.productservice.global.infrastructure.success;
 
 import org.springframework.http.HttpStatus;
 
-public interface BaseErrorCode {
+public interface BaseSuccessCode {
 
     HttpStatus getStatus();
     String getCode();
     String getMessage();
-
 }
