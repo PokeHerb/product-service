@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.pokeherb.productservice.global.infrastructure.error.BaseErrorCode;
 import org.pokeherb.productservice.global.infrastructure.CustomResponse;
 import org.pokeherb.productservice.global.infrastructure.error.GeneralErrorCode;
+import org.pokeherb.productservice.product.domain.exception.ProductStockNotEnoughException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -51,6 +52,19 @@ public class GlobalExceptionHandler {
                 .build();
 
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+    }
+
+    // 상품 재고 부족으로 인한 실패
+    @ExceptionHandler(ProductStockNotEnoughException.class)
+    public ResponseEntity<CustomResponse<?>> handle(ProductStockNotEnoughException e) {
+
+        CustomResponse<?> response = CustomResponse.builder()
+                .isSuccess(false)
+                .status(e.getProductErrorCode().getStatus())
+                .code(e.getProductErrorCode().getCode())
+                .message(e.getMessage())
+                .build();
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 }
 
