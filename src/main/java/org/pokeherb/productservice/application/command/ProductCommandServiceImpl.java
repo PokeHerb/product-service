@@ -1,11 +1,11 @@
-package org.pokeherb.productservice.product.domain.application.command;
+package org.pokeherb.productservice.application.command;
 
 import lombok.RequiredArgsConstructor;
 import org.pokeherb.productservice.global.infrastructure.client.VendorServiceClient;
 import org.pokeherb.productservice.global.infrastructure.exception.CustomException;
 import org.pokeherb.productservice.product.domain.ProductRepository;
 import org.pokeherb.productservice.product.domain.VendorHubIdDto;
-import org.pokeherb.productservice.product.domain.application.dto.ProductDto;
+import org.pokeherb.productservice.application.dto.ProductDto;
 import org.pokeherb.productservice.product.domain.entity.Product;
 import org.pokeherb.productservice.product.domain.exception.ProductErrorCode;
 import org.pokeherb.productservice.product.presentation.dto.ProductCreateRequestDto;
@@ -30,6 +30,8 @@ public class ProductCommandServiceImpl implements ProductCommandService {
                 .name(dto.name())
                 .stock(dto.stock())
                 .build();
+
+        newProduct = productRepository.save(newProduct);
 
         VendorHubIdDto vendorHubIdDto = newProduct.setVendorIdHubId(dto.vendorId(), vendorServiceClient);
 
@@ -65,10 +67,7 @@ public class ProductCommandServiceImpl implements ProductCommandService {
 
         Product product = productRepository.findById(productId).orElseThrow(() -> new CustomException(ProductErrorCode.PRODUCT_NOT_FOUND));
 
-
         // 추후에 Security 설정 후 수정
         product.delete(null);
-
-
     }
 }

@@ -1,10 +1,10 @@
-package org.pokeherb.productservice.product.presentation;
+package org.pokeherb.productservice.product.presentation.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.pokeherb.productservice.global.infrastructure.CustomResponse;
 import org.pokeherb.productservice.global.infrastructure.success.GeneralSuccessCode;
-import org.pokeherb.productservice.product.domain.application.command.ProductCommandService;
-import org.pokeherb.productservice.product.domain.application.dto.ProductDto;
+import org.pokeherb.productservice.application.command.ProductCommandService;
+import org.pokeherb.productservice.application.dto.ProductDto;
 import org.pokeherb.productservice.product.presentation.dto.ProductCreateRequestDto;
 import org.pokeherb.productservice.product.presentation.dto.ProductUpdateRequestDto;
 import org.springframework.web.bind.annotation.*;

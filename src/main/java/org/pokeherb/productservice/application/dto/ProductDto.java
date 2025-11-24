@@ -1,4 +1,4 @@
-package org.pokeherb.productservice.product.domain.application.dto;
+package org.pokeherb.productservice.application.dto;
 
 import lombok.Builder;
 
@@ -6,6 +6,7 @@ import java.util.UUID;
 
 @Builder
 public record ProductDto(
+        UUID productId,
         UUID vendorId,
         Long hubId,
         String name,
