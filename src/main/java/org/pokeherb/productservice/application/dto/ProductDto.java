@@ -1,4 +1,4 @@
-package org.pokeherb.productservice.product.domain.application.dto;
+package org.pokeherb.productservice.application.dto;
 
 import lombok.Builder;
 

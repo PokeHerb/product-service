@@ -1,6 +1,6 @@
-package org.pokeherb.productservice.product.domain.application.command;
+package org.pokeherb.productservice.application.command;
 
-import org.pokeherb.productservice.product.domain.application.dto.ProductDto;
+import org.pokeherb.productservice.application.dto.ProductDto;
 import org.pokeherb.productservice.product.presentation.dto.ProductCreateRequestDto;
 import org.pokeherb.productservice.product.presentation.dto.ProductUpdateRequestDto;
 
