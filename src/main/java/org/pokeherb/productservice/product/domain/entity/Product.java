@@ -9,7 +9,9 @@ import org.pokeherb.productservice.global.domain.Auditable;
 import org.pokeherb.productservice.global.infrastructure.client.HubServiceClient;
 import org.pokeherb.productservice.global.infrastructure.client.VendorServiceClient;
 import org.pokeherb.productservice.global.infrastructure.exception.CustomException;
-import org.pokeherb.productservice.product.domain.application.dto.ProductUpdateRequestDto;
+import org.pokeherb.productservice.infrastructure.dto.VendorResponse;
+import org.pokeherb.productservice.product.domain.VendorHubIdDto;
+import org.pokeherb.productservice.product.presentation.dto.ProductUpdateRequestDto;
 import org.pokeherb.productservice.product.domain.exception.ProductErrorCode;
 import org.pokeherb.productservice.product.domain.exception.ProductStockNotEnoughException;
 
@@ -65,8 +67,30 @@ public class Product extends Auditable {
         return true;
     }
 
+    public VendorHubIdDto setVendorIdHubId(UUID vendorId, VendorServiceClient vendorClient) {
+
+        VendorResponse vendorResponse = vendorCheck(vendorId, vendorClient);
+        if (vendorResponse.vendorId() == null) {
+            throw new CustomException(ProductErrorCode.VENDOR_NOT_FOUND);
+        }
+
+        if (vendorResponse.hubId() == null) {
+            throw new CustomException(ProductErrorCode.HUB_NOT_FOUND);
+        }
+
+        this.vendorId = vendorResponse.vendorId();
+        this.hubId = vendorResponse.hubId();
+
+        return new VendorHubIdDto(vendorResponse.vendorId(), vendorResponse.hubId());
+
+    }
+
+    public VendorResponse vendorCheck(UUID vendorId, VendorServiceClient vendorClient) {
+        return vendorClient.getVendor(vendorId);
+    }
+
     public void changeInfo(ProductUpdateRequestDto dto) {
-        this.hubId = dto.hubId();
+        this.vendorId = dto.vendorId();
         this.name = dto.name();
         this.stock = dto.stock();
     }
