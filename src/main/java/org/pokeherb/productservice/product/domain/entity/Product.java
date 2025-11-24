@@ -5,6 +5,7 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.pokeherb.productservice.application.dto.ProductDto;
 import org.pokeherb.productservice.global.domain.Auditable;
 import org.pokeherb.productservice.global.infrastructure.client.HubServiceClient;
 import org.pokeherb.productservice.global.infrastructure.client.VendorServiceClient;
@@ -95,4 +96,14 @@ public class Product extends Auditable {
         this.stock = dto.stock();
     }
 
+    public ProductDto toDto() {
+
+        return ProductDto.builder()
+                .productId(this.id)
+                .vendorId(this.vendorId)
+                .hubId(this.hubId)
+                .name(this.name)
+                .stock(this.stock)
+                .build();
+    }
 }
