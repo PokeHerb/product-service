@@ -31,6 +31,8 @@ public class ProductCommandServiceImpl implements ProductCommandService {
                 .stock(dto.stock())
                 .build();
 
+        newProduct = productRepository.save(newProduct);
+
         VendorHubIdDto vendorHubIdDto = newProduct.setVendorIdHubId(dto.vendorId(), vendorServiceClient);
 
         productRepository.save(newProduct);
@@ -65,10 +67,7 @@ public class ProductCommandServiceImpl implements ProductCommandService {
 
         Product product = productRepository.findById(productId).orElseThrow(() -> new CustomException(ProductErrorCode.PRODUCT_NOT_FOUND));
 
-
         // 추후에 Security 설정 후 수정
         product.delete(null);
-
-
     }
 }
