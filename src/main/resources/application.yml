@@ -9,6 +9,11 @@ spring:
         enabled: true
         service-id: config-server
 
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html   # Swagger UI 접속 URL
+  api-docs:
+    path: /v3/api-docs       # OpenAPI JSON URL
 
 eureka:
   instance:
