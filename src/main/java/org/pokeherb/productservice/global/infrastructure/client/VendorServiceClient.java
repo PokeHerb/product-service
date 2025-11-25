@@ -7,12 +7,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.UUID;
 
-@FeignClient("vendor-service")
+@FeignClient(name = "vendor-service")
 public interface VendorServiceClient {
 
-    @GetMapping("/v1/vendor/{vendorId}/exists")
+    @GetMapping("/{vendorId}/exists")
     boolean existsVendor(@PathVariable("vendorId") UUID vendorId);
 
-    @GetMapping("v1/vendor/{vendorId}")
+    @GetMapping("/{vendorId}")
     VendorResponse getVendor(@PathVariable("vendorId") UUID vendorId);
 }

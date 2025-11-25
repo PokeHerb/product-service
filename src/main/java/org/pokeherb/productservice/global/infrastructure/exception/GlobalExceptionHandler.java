@@ -30,6 +30,8 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     public ResponseEntity<CustomResponse<?>> handle(Exception e) {
         log.error("Exception: {}", e.getMessage());
+        log.error("에러: {}", e.toString());
+
         BaseErrorCode code = GeneralErrorCode.INTERNAL_SERVER_ERROR_500;
 
         CustomResponse<?> response = CustomResponse.onFail(code);

@@ -1,6 +1,7 @@
 package org.pokeherb.productservice.application.command;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.pokeherb.productservice.global.infrastructure.client.VendorServiceClient;
 import org.pokeherb.productservice.global.infrastructure.exception.CustomException;
 import org.pokeherb.productservice.product.domain.ProductRepository;
@@ -16,6 +17,7 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class ProductCommandServiceImpl implements ProductCommandService {
 
     private final ProductRepository productRepository;
@@ -31,11 +33,11 @@ public class ProductCommandServiceImpl implements ProductCommandService {
                 .stock(dto.stock())
                 .build();
 
-        newProduct = productRepository.save(newProduct);
-
         VendorHubIdDto vendorHubIdDto = newProduct.setVendorIdHubId(dto.vendorId(), vendorServiceClient);
 
-        productRepository.save(newProduct);
+        log.info("업체 ID, 허브 ID : ", vendorHubIdDto.vendorId(), vendorHubIdDto.hubId());
+
+        newProduct = productRepository.save(newProduct);
 
         return ProductDto.from(
                 vendorHubIdDto.vendorId(),
