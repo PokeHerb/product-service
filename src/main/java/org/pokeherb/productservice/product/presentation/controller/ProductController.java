@@ -19,7 +19,6 @@ import java.util.UUID;
 @Tag(name = "Product Controller", description = "제품 조회, 등록, 수정, 삭제 API")
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/v1/product")
 public class ProductController {
 
     private final ProductCommandService productCommandService;

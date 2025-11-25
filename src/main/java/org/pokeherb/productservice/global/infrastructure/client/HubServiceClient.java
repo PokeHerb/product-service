@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 @FeignClient("hub-service")
 public interface HubServiceClient {
 
-    @GetMapping("/v1/hub/{hubId}/exists")
+    @GetMapping("/{hubId}/exists")
     boolean existsHub(@PathVariable("hubId") Long hubId);
 
-    @GetMapping("/v1/hub/{hubId}")
+    @GetMapping("/{hubId}")
     HubResponse getHub(@PathVariable("hubId") Long hubId);
 }
 
