@@ -10,7 +10,7 @@ import org.springframework.http.HttpStatus;
 public enum RabbitErrorCode implements BaseErrorCode {
 
     RABBITMQ_CONNECTION_FAILED(HttpStatus.INTERNAL_SERVER_ERROR, "RABBIT_JSON_500", "RabbitMQ 메시지의 JSON 변환에 실패했습니다."),
-    ;
+    RABBITMQ_PROCESSING_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "RABBIT_CONN_500", "RabbitMQ 연결 또는 전송 중 오류가 발생했습니다.");
 
     private final HttpStatus status;
     private final String code;

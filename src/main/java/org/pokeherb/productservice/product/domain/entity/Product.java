@@ -38,7 +38,7 @@ public class Product extends Auditable {
     private int stock;
 
     @Builder
-    public Product(UUID vendorId, Long hubId, String name, Integer stock) {
+    public Product(UUID vendorId, Long hubId, String name, int stock) {
         this.vendorId = vendorId;
         this.hubId = hubId;
         this.name = name;
@@ -49,11 +49,8 @@ public class Product extends Auditable {
         softDelete(username);
     }
 
-    public void decreaseStock(int orderCount) {
-        if(this.stock <= 0 || this.stock - orderCount < 0) {
-            throw new ProductStockNotEnoughException(this.stock);
-        }
-        this.stock -= orderCount;
+    public void changeStock(int stockNumber) {
+        this.stock = stockNumber;
     }
 
     public boolean existsByIds(Long hubId, UUID vendorId, HubServiceClient hubClient, VendorServiceClient vendorClient) {

@@ -6,7 +6,9 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 public record RabbitProductProperties(
         String exchange,
         String queue,
-        String routingKey
+        String routingKeyDecrease,
+        String routingKeyIncrease
+
 ) {
 
 }
